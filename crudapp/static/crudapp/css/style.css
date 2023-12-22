@@ -1,0 +1,30 @@
+.btn-back{
+    background-color: rgb(1, 150, 218);
+    border-color: aqua;
+    border-radius: 3px;
+    color:rgb(255, 255, 255);
+}
+.btn-back:hover {
+    
+    color: rgb(1, 150, 218);
+    border-color: rgb(1, 150, 218);
+    background-color: rgb(228, 255, 229)
+  }
+
+.btn-action{
+    font-weight:700;
+}
+
+.btn-next{
+    background-color: rgb(4, 175, 47);
+    border-color: rgb(7, 220, 7);
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+}
+
+.btn-next:hover{
+    color: rgb(4, 175, 47);
+    border-color: rgb(4, 175, 47);
+    background-color: rgb(228, 255, 229)
+}
+

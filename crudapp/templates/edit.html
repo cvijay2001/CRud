@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ADD Employee{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'crudapp/css/edit.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+<div class="d-flex justify-content-start mx-4">
+    <a class='text-dark ' href="{% url "show" %}">
+        <button type="button" class="btn-action btn-back mt-4 btn btn-success">
+            Back
+        </button>
+    </a>
+</div>
+
+
+<h1 class="text-center">Update Employee Details</h1>
+<hr>
+<div class="container mt-3">
+    <form action='' method='POST' enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+
+        {% for field in fm %}
+
+        <div class="mt-3 form-group row mb-15">
+
+            <label for="{{field.id_for_label}}" class="col-sm-2 col-form-label">{{field.label}}</label>
+            {% if not field.name == 'eprofilephoto' %}
+            <div class="col-md-6">
+                {% if field.name == 'eid' %}
+                <input type="number" class="form-control" readonly id="eid" placeholder="Enter ID" name='eid'
+                    value='{{field.value}}' required>
+                {% else %}
+                {{field}}
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="col-md-6">
+                <input type="file" name="eprofilephoto" class="form-control" accept="image/*" id="eprofilephoto"
+                    onchange="validateForm()" placeholder="Select Employee Profile Photo" required="">
+            </div>
+            {% endif %}
+
+            {% if field.errors %}
+            <div class="col-md-4 d-flex align-items-center">
+                <span class="error-msg">{{ field.errors.0 }}</span>
+            </div>
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+
+        <!--  image preview content goes here -->
+        <div class="mt-3 form-group align-center row mb-15">
+            <div class="col-sm-2 col-form-label"></div>
+            <div class="col-md-6 my-2 text-center ">
+                <div id="imagePreview">
+                    <img src="/media/{{fm.eprofilephoto.value}}" id='eprofilephoto' width="160" height="160">
+                </div>
+            </div>
+        </div>
+
+        <!-- non_field_errors -->
+        {% if fm.non_field_errors %}
+        {% for error_msg in fm.non_field_errors %}
+        <span class="error-msg">{{error_msg}}</span>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Submit Button -->
+        <div class="mt-3 form-group align-center row mb-15">
+            <div class="col-sm-2 col-form-label"></div>
+            <div class="col-md-6 my-2 text-center ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script src='{% static "crudapp/js/edit.js" %}'></script>
+{% endblock js %}
