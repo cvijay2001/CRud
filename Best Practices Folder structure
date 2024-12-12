@@ -1,0 +1,31 @@
+DM CRUX DJANGO
+├── crux_doc_management
+│   ├── assets
+│   ├── css
+│   ├── images
+│   ├── js
+│   └── video
+│   └── Sample-excel.xlsx
+├── base
+│   ├── _pycache_
+│   ├── api
+│   ├── migrations
+│   └── templates
+│       ├── utility_modules
+│       ├── _init_.py
+│       ├── admin.py
+│       ├── apps.py
+│       ├── forms.py
+│       ├── middleware.py
+│       ├── models.py
+│       ├── permissions.py
+│       ├── tests.py
+│       ├── urls.py
+│       └── validators.py
+│       └── views.py
+├── crux_doc_management
+├── logs
+└── VENV_CRUX
+    └── env
+    ├── .gitignore
+    └── manage.py
